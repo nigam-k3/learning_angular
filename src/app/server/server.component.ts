@@ -7,23 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServerComponent implements OnInit {
 
-  card: number = 10;
+  severID: number = 10;
   title: string = 'Nigam';
-  server :string = 'this property binding';
-  onChangeVal:boolean = false;
-  onServerCreate : string = 'server is not created';
+  serverStatus:string = 'offline';
+  
 
   constructor() {
-    setTimeout(()=>{
-      this.onChangeVal = true;
-    },2000);
+    this.serverStatus = Math.random()>0.5 ? 'online': 'offline';
    }
 
   ngOnInit(): void {
   }
+  getServerStatus(){
+    return this.serverStatus ;
+  }
   
-onServerChnage(){
-  this.onServerCreate = 'server is created';
-}
+  getColor(){
+     return this.serverStatus === 'online' ? 'green' : 'red';
+  }
 
 }
